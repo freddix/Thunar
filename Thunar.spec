@@ -2,12 +2,12 @@
 
 Summary:	Xfce file manager
 Name:		Thunar
-Version:	1.6.2
+Version:	1.6.3
 Release:	1
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/1.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	a446103ab90855cc8ba484dfeedb82d8
+# Source0-md5:	4f10d5d5576ce5127308d6badbac3afa
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
