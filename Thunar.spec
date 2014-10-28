@@ -3,11 +3,12 @@
 Summary:	Xfce file manager
 Name:		Thunar
 Version:	1.6.3
-Release:	1
+Release:	2
 License:	GPL v2 / LGPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/xfce/thunar/1.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	4f10d5d5576ce5127308d6badbac3afa
+Patch0:		0001-Fix-Open-With-default-app-with-glib-2.41.patch
 URL:		http://thunar.xfce.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -75,6 +76,7 @@ to add a trash can to their panel.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -99,9 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/thunarx-2/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.la
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/{nn_NO,ur_PK}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{,thunarx-2/}*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.la
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/Thunar
 
 %find_lang %{name}
 
